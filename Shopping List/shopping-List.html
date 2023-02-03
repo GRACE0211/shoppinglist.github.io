@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping List</title>
+  <script src="https://unpkg.com/vue@next"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="shopping-List.css">
+</head>
+<body>
+  <div class="main">
+    <div id="app" class="list">
+      <div class="header">
+        <h1>{{ header }}</h1>
+        <button v-if="editing" v-on:click="doEdit(false)" class="add-hide">
+          <i class="fa fa-minus" aria-hidden="true"></i>
+        </button>
+        <button v-else v-on:click="doEdit(true)" class="add-hide">
+          <i class="fa fa-plus" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div v-if="editing">
+        <input type="text" v-model="newItem" placeholder="  Add an item">
+        <button
+        class="savebtn"
+        v-on:click="saveItem"
+        v-bind:disabled="newItem.length === 0"
+        >
+        <!-- 可自動忽略空的 input -->
+        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+
+        </button>
+      </div>
+      <p v-if="items.length === 0">Nice job! You've bought all your items!</p>
+      <!-- class 會連到 CSS 的 (strikeout), 用逗號隔開下一個 class -->
+      <ul>
+      <li
+      class="shopping-list"s
+      v-for="item in items" 
+      :key="items.id" 
+      v-on:click="togglePurchased(item)"
+      :class="{strikeout: item.purchased}">
+      {{item.label}}
+      <!-- <a href="#" v-on:click.prevent="deleteItems(item)">X</a> -->
+      </li>
+    </ul>
+      </div>
+    </div>
+  </div>
+  <script src="shopping-List.js"></script>
+</body>
+</html>
