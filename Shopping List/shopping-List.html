@@ -8,12 +8,16 @@
   <script src="https://unpkg.com/vue@next"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="shopping-List.css">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
 </head>
 <body>
   <div class="main">
     <div id="app" class="list">
       <div class="header">
-        <h1>{{ header }}</h1>
+        <h3>{{ header }}</h1>
         <button v-if="editing" v-on:click="doEdit(false)" class="add-hide">
           <i class="fa fa-minus" aria-hidden="true"></i>
         </button>

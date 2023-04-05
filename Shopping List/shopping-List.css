@@ -1,7 +1,6 @@
 *{
   margin: 0;
   padding: 0;
-  font-family: Calibri, 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
   box-sizing: border-box;
 }
 
@@ -9,6 +8,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  height:100vh;
+  
 }
 
 .list{
@@ -16,14 +17,13 @@
   width: 20%;
   text-align: center;
   padding: 20px;
-  margin-top: 300px;
   background-color: #F2B279;
   border: 5.5px solid #734B43;
   border-radius: 5px;
   box-shadow: 2px 2px 2px 1px rgb(163 108 26 / 40%);
 }
 
-h1{
+h3{
   padding: 10px;
 }
 
@@ -58,6 +58,8 @@ ul{
   width: 50%;
   margin: 5px auto;
   box-shadow: 2px 2px 2px 1px rgb(163 108 26 / 40%);
+  animation: fadeInRight;
+  animation-duration: 0.25s;
 }
 
 button{
