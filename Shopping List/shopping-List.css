@@ -50,6 +50,7 @@ ul{
 }
 
 .shopping-list{
+  font-size: 15px;
   list-style-type: none;
   padding: 5px;
   background-color: #D98C4A;
