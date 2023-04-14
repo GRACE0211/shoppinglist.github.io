@@ -8,50 +8,56 @@
   <script src="https://unpkg.com/vue@next"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="shopping-List.css">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
   />
 </head>
-<body>
-  <div class="main">
-    <div id="app" class="list">
-      <div class="header">
-        <h3>{{ header }}</h1>
-        <button v-if="editing" v-on:click="doEdit(false)" class="add-hide">
+<body class=" flex justify-center h-screen bg-slate-600">
+  <div class="wrapper mx-auto">
+    <header>
+      <img src="https://static.vecteezy.com/system/resources/previews/011/356/153/original/girl-checking-shopping-list-3d-character-illustration-png.png" alt="" class="h-96 w-96 absolute object-cover -z-10 opacity-50">
+      <p class="text-center drop-shadow-md text-slate-50 font-black text-4xl">SHOPPING LIST</p>
+    </header>
+    <section id="app" class="relative drop-shadow-lg text-slate-900 bg-slate-300 rounded-xl p-2  mb-10">
+      <div>
+        <button v-if="editing" v-on:click="doEdit(false)" class="absolute bg-slate-600 text-white drop-shadow-lg w-10 h-10 rounded-full right-2 bottom-2">
           <i class="fa fa-minus" aria-hidden="true"></i>
         </button>
-        <button v-else v-on:click="doEdit(true)" class="add-hide">
+        <button v-else v-on:click="doEdit(true)" class="absolute bg-slate-600 text-white drop-shadow-lg w-10 h-10 rounded-full right-2 bottom-2">
           <i class="fa fa-plus" aria-hidden="true"></i>
         </button>
       </div>
-      <div v-if="editing">
-        <input type="text" v-model="newItem" placeholder="  Add an item">
+      <div v-if="editing" class="flex gap-3 justify-center items-center my-4">
+        <input type="text" v-model="newItem" placeholder="  Add an item"  @keyup.enter="saveItem" class="drop-shadow-lg px-2 py-1 rounded-xl">
         <button
         class="savebtn"
         v-on:click="saveItem"
         v-bind:disabled="newItem.length === 0"
         >
         <!-- 可自動忽略空的 input -->
-        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+        <i class="fa fa-shopping-cart bg-white p-2 rounded-full drop-shadow-lg" aria-hidden="true"></i>
 
         </button>
       </div>
-      <p v-if="items.length === 0">Nice job! You've bought all your items!</p>
+      <p v-if="items.length === 0" class="py-2 text-center">Nice job! <br/>You've bought all your items!</p>
       <!-- class 會連到 CSS 的 (strikeout), 用逗號隔開下一個 class -->
-      <ul>
+      <ul class="mt-6 mb-14">
       <li
-      class="shopping-list"s
+      class="bg-white rounded-xl p-2 m-2 drop-shadow-md uppercase shadow-md relative"
       v-for="item in items" 
       :key="items.id" 
       v-on:click="togglePurchased(item)"
       :class="{strikeout: item.purchased}">
       {{item.label}}
-      <!-- <a href="#" v-on:click.prevent="deleteItems(item)">X</a> -->
-      </li>
+      <button v-on:click="deleteItems(item)" class="btn">
+        <i class="fa fa-trash" aria-hidden="true"></i>
+      </button>
+    </li>
     </ul>
-      </div>
-    </div>
+  </section>
   </div>
   <script src="shopping-List.js"></script>
 </body>
