@@ -1,90 +1,59 @@
 *{
   margin: 0;
   padding: 0;
+  /* font-family: 'Roboto Mono', monospace; */
   box-sizing: border-box;
 }
 
-.main{
+.wrapper {
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  perspective: 10px;
+}
+
+header {
+  position: relative;
   display: flex;
-  align-items: center;
   justify-content: center;
-  height:100vh;
-  
-}
-
-.list{
-  flex: none;
-  width: 20%;
-  text-align: center;
-  padding: 20px;
-  background-color: #F2B279;
-  border: 5.5px solid #734B43;
-  border-radius: 5px;
-  box-shadow: 2px 2px 2px 1px rgb(163 108 26 / 40%);
-}
-
-h3{
-  padding: 10px;
-}
-
-.header{
-  background-color: antiquewhite;
-  margin-bottom: 10px;
-  border-radius: 2px;
-  box-shadow: 2px 2px 2px 1px rgb(163 108 26 / 40%);
-}
-
-input{
-  padding: 4px 0;
-  border: 2.5px solid #8C5535;
-  box-shadow: 2px 2px 2px 1px rgb(163 108 26 / 40%);
+  align-items: center;
+  height: 45%;
+  transform-style: preserve-3d;
+  z-index: -10;
 }
 
 .strikeout{
-  color: #F2F2F2;;
+  color: #c1c0c0;
   text-decoration:line-through;
 }
 
-ul{
-  margin: 10px auto;
+ul>li {
+  overflow: hidden;
 }
 
-.shopping-list{
-  font-size: 15px;
-  list-style-type: none;
-  padding: 5px;
-  background-color: #D98C4A;
-  border: 2px solid #734B43;
-  border-radius: 2px;
-  margin: 5px auto;
-  box-shadow: 2px 2px 2px 1px rgb(163 108 26 / 40%);
-  animation: fadeInRight;
-  animation-duration: 0.25s;
+.btn {
+  position: absolute;
+  height: 100%;
+  background-color: rgb(142, 52, 36);
+  color: white;
+  top: 0;
+  right: 0;
+  transition: width .3s ease-in-out;
+  width: 0px;
+  transform-origin: right;
 }
 
-button{
-  color: #F2F2F2;
-  background-color: #734B43;
-  padding: 3px 8px;
-  margin-bottom: 5px;
-  box-shadow: 2px 2px 2px 1px rgb(163 108 26 / 40%);
-  border: 2px solid #8C5535;
-  border-radius: 2px;
-  font-size: 16px;
+.fa-trash{
+  transition: opacity .3s ease-in-out;
+  opacity: 0;
+  transform-origin: right;
+  font-size: 20px;
 }
 
-.savebtn{
-  margin-left: 5px;
+ul>li:hover .btn {
+  width: 50px;
 }
 
-button:hover{
-  background-color:#F2F2F2;
-  color:#734B43;
-}
-
-@media (max-width: 960px) {
-  .list{
-    width: 90%;
-    margin-top: 10vh;
-  }
+ul>li:hover .fa-trash {  
+  opacity: 1;
 }
